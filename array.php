@@ -48,9 +48,21 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
             "company" => 'Audi AG',
             "companyUrl" => 'https://www.audi-mediacenter.com'
         ]
-    ]
-?>
+    ];
+        
+    function filteredByCompany($cars) {
+        $filteredCars = [];
+        foreach($cars as $car) {
+            if($car['company'] === 'Tesla Inc') {
+                $filteredCars[] = $cars;
+            }
+        }
 
+        return $filteredCars;
+    }
+
+    filteredByCompany($cars);
+?>
 <ul>
     <?php foreach($cars as $car): ?>
             
@@ -58,7 +70,10 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
                 <a href="<?php echo $car['website'] ?>" target="_blank">
                     <?php echo $car['name']; ?>
                 </a>
-                by <?php echo $car['company']; ?>
+                by 
+                <a href="<?php echo $car['companyUrl']?>">
+                    <?php echo $car['company']; ?>
+                </a>
             </li>
         
     <?php endforeach; ?>
@@ -74,5 +89,23 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
             </a>
         </li>
     <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+
+<h2>Cars Filtered by Company Using Functions.</h2>
+
+<ul>
+    <?php foreach($cars as $car): ?>
+            
+            <li>
+                <a href="<?php echo $car['website'] ?>" target="_blank">
+                    <?php echo $car['name']; ?>
+                </a>
+                by 
+                <a href="<?php echo $car['companyUrl']?>">
+                    <?php echo $car['company']; ?>
+                </a>
+            </li>
+        
     <?php endforeach; ?>
 </ul>
