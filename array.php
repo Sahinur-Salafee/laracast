@@ -60,6 +60,8 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 
         return $filteredCars;
     }
+
+    $filteredCarsLists = filteredByCompany($cars, 'Audi AG');
 ?>
 <ul>
     <?php foreach($cars as $car): ?>
@@ -93,7 +95,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 <h2>Cars Filtered by Company Using Functions.</h2>
 
 <ul>
-    <?php foreach(filteredByCompany($cars, 'Tesla Inc') as $car): ?>
+    <?php foreach($filteredCarsLists as $car): ?>
         <li>
             <a href="<?php echo $car['website'] ?>" target="_blank">
                 <?php echo $car['name']; ?>
