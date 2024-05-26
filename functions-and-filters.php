@@ -16,41 +16,61 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
         <?php endforeach; ?>
 </ul>
 
-<h2>Associative Array</h2>
+<h2>Functions and Filters.</h2>
 
 <?php
     $cars = [
         [
             "name" => "Tesla Roadster",
-            "model" => "Roadster",
+            "model" => "Model Roadster",
             "website" => 'https://www.tesla.com/roadster',
             "company" => 'Tesla Inc',
-            "companyUrl" => 'https://www.tesla.com'
+            "companyUrl" => 'https://www.tesla.com',
+            "price" => 35000
         ],
         [
             "name" => "Tesla X",
-            "model" => "X",
+            "model" => "Model X",
             "website" => 'https://www.tesla.com/roadster',
             "company" => 'Tesla Inc',
-            "companyUrl" => 'https://www.tesla.com'
+            "companyUrl" => 'https://www.tesla.com',
+            "price" => 32000
         ], 
         [
             "name" => "Tesla S",
-            "model" => "S",
+            "model" => "Model S",
             "website" => 'https://www.tesla.com/roadster',
             "company" => 'Tesla Inc',
-            "companyUrl" => 'https://www.tesla.com'
+            "companyUrl" => 'https://www.tesla.com',
+            "price" => 30000
         ],
         [
             "name" => "Audi",
             "model" => "Audi A7",
             "website" => 'https://www.audi-mediacenter.com/en/audi-a7-sportback-12055',
             "company" => 'Audi AG',
-            "companyUrl" => 'https://www.audi-mediacenter.com'
-        ]
+            "companyUrl" => 'https://www.audi-mediacenter.com',
+            "price" => 32000
+        ],
+        [
+            "name" => "Audi",
+            "model" => "Audi A4",
+            "website" => 'https://www.audi-mediacenter.com/en/audi-a4-24',
+            "company" => 'Audi AG',
+            "companyUrl" => 'https://www.audi-mediacenter.com',
+            "price" => 35000
+        ],
+        [
+            "name" => "Audi",
+            "model" => "Audi A3",
+            "website" => 'https://www.audi-mediacenter.com/en/audi-a3-sportback-15',
+            "company" => 'Audi AG',
+            "companyUrl" => 'https://www.audi-mediacenter.com',
+            "price" => 30000
+        ],
     ];
         
-    function filteredByCompany($cars, $company) {
+    $filteredByCompany = function ($cars, $company) {
         $filteredCars = [];
         foreach($cars as $car) {
             if($car['company'] === $company) {
@@ -59,43 +79,15 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
         }
 
         return $filteredCars;
-    }
+    };
 
-    // $filteredCarsLists = filteredByCompany($cars, 'Audi AG');
+    $filteredCarsLists = $filteredByCompany($cars, 'Audi AG');
 ?>
-<ul>
-    <?php foreach($cars as $car): ?>
-            
-            <li>
-                <a href="<?php echo $car['website'] ?>" target="_blank">
-                    <?php echo $car['name']; ?>
-                </a>
-                by 
-                <a href="<?php echo $car['companyUrl']?>">
-                    <?php echo $car['company']; ?>
-                </a>
-            </li>
-        
-    <?php endforeach; ?>
-</ul>
-
-<h2>Cars Filtered by Company.</h2>
-<ul>
-    <?php foreach($cars as $car): ?>
-        <?php if($car['company'] === 'Tesla Inc'): ?>
-        <li>
-            <a href="<?php echo $car['companyUrl'] ?>">
-                <?php echo $car['name']; ?>
-            </a>
-        </li>
-    <?php endif; ?>
-    <?php endforeach; ?>
-</ul>
 
 <h2>Cars Filtered by Company Using Functions.</h2>
 
 <ul>
-    <?php foreach(filteredByCompany($cars, 'Audi AG') as $car): ?>
+    <?php foreach($filteredCarsLists as $car): ?>
         <li>
             <a href="<?php echo $car['website'] ?>" target="_blank">
                 <?php echo $car['name']; ?>
