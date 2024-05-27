@@ -31,7 +31,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
         [
             "name" => "Tesla X",
             "model" => "Model X",
-            "website" => 'https://www.tesla.com/roadster',
+            "website" => 'https://www.tesla.com/modelx',
             "company" => 'Tesla Inc',
             "companyUrl" => 'https://www.tesla.com',
             "price" => 32000
@@ -39,7 +39,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
         [
             "name" => "Tesla S",
             "model" => "Model S",
-            "website" => 'https://www.tesla.com/roadster',
+            "website" => 'https://www.tesla.com/models',
             "company" => 'Tesla Inc',
             "companyUrl" => 'https://www.tesla.com',
             "price" => 30000
@@ -69,6 +69,8 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
             "price" => 30000
         ],
     ];
+
+    // Anonymous function
         
     $filteredByCompany = function ($cars, $company) {
         $filteredCars = [];
@@ -97,5 +99,78 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
                 <?php echo $car['company']; ?>
             </a>
         </li>
+    <?php endforeach; ?>
+</ul>
+
+<h2>More Generic Cars Filtered by Any Parameter Using Functions.</h2>
+
+<?php
+
+    /**
+     * return 
+     */
+    function filter($items,$key,$value) {
+        $filteredItems = [];
+        foreach($items as $item) {
+            if($item[$key] === $value) {
+                $filteredItems[] = $item;
+            }
+        }
+
+        return $filteredItems;
+    }
+    // filter cars by company.
+    $filteredCarItems = filter($cars,'company','Tesla Inc')
+?>
+
+<h4>Car Names Filter by Company</h4>
+<ul>
+    <?php foreach($filteredCarItems as $item): ?>
+        <li>
+            <a href="<?php echo $item['website'] ?>" target="_blank">
+                <?php echo $item['name']; ?>
+            </a>
+            by 
+            <a href="<?php echo $item['companyUrl']?>">
+                <?php echo $item['company']; ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<h4>Car Filter by Model</h4>
+<ul>
+    <?php 
+        $filteredCarItemByModel = filter($cars,'model', 'Model S');
+        foreach($filteredCarItemByModel as $item):
+    ?>
+        <li>
+            <a href="<?php echo $item['website'] ?>" target="_blank">
+                <?php echo $item['name']; ?>
+            </a>
+            by 
+            <a href="<?php echo $item['companyUrl']?>">
+                <?php echo $item['model']; ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<h4>Car Filter by Price</h4>
+
+<ul class="price">
+    <?php 
+        $filteredCarItemByPrice = filter($cars,'price', 30000);
+        foreach($filteredCarItemByPrice as $item):
+            if($item['price'] >= '30000'):
+    ?>
+        <li>
+            <a href="<?php echo $item['website'] ?>" target="_blank">
+                <?php echo $item['name']; ?>
+            </a>
+            
+            <p>model is <?php echo $item['model']; ?></p>
+        </li>
+        <?php endif; ?>
     <?php endforeach; ?>
 </ul>
