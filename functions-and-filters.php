@@ -107,7 +107,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 <?php
 
     /**
-     * return 
+     * return items by key value pairs.
      */
     function filter($items,$key,$value) {
         $filteredItems = [];
@@ -156,20 +156,39 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
     <?php endforeach; ?>
 </ul>
 
-<h4>Car Filter by Price</h4>
+<h4>Car Filter by Price under or equal 30k</h4>
 
 <ul class="price">
     <?php 
         $filteredCarItemByPrice = filter($cars,'price', 30000);
         foreach($filteredCarItemByPrice as $item):
-            if($item['price'] >= '30000'):
+            if($item['price'] <= 30000):
     ?>
         <li>
             <a href="<?php echo $item['website'] ?>" target="_blank">
                 <?php echo $item['name']; ?>
             </a>
             
-            <p>model is <?php echo $item['model']; ?></p>
+            <p>price is $<?php echo $item['price']; ?></p>
+        </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+
+<h4>Car Filter by Price under or equal 35k</h4>
+
+<ul class="price">
+    <?php 
+        $filteredCarItemByPrice = filter($cars,'price', 35000);
+        foreach($filteredCarItemByPrice as $item):
+            if($item['price'] === 35000):
+    ?>
+        <li>
+            <a href="<?php echo $item['website'] ?>" target="_blank">
+                <?php echo $item['name']; ?>
+            </a>
+            
+            <p>price is $<?php echo $item['price']; ?></p>
         </li>
         <?php endif; ?>
     <?php endforeach; ?>
