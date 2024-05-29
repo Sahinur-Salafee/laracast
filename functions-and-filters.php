@@ -111,7 +111,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
     /**
      * return items by key value pairs.
      */
-    function filter($items,$key,$value) {
+    function filters($items,$key,$value) {
         $filteredItems = [];
         foreach($items as $item) {
             if($item[$key] === $value) {
@@ -122,7 +122,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
         return $filteredItems;
     }
     // filter cars by company.
-    $filteredCarItems = filter($cars,'company','Tesla Inc')
+    $filteredCarItems = filters($cars,'company','Tesla Inc')
 ?>
 
 <h4>Car Names Filter by Company</h4>
@@ -143,7 +143,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 <h4>Car Filter by Model</h4>
 <ul>
     <?php 
-        $filteredCarItemByModel = filter($cars,'model', 'Model S');
+        $filteredCarItemByModel = filters($cars,'model', 'Model S');
         foreach($filteredCarItemByModel as $item):
     ?>
         <li>
@@ -162,7 +162,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 
 <ul class="price">
     <?php 
-        $filteredCarItemByPrice = filter($cars,'price', 30000);
+        $filteredCarItemByPrice = filters($cars,'price', 30000);
         foreach($filteredCarItemByPrice as $item):
             if($item['price'] <= 30000):
     ?>
@@ -181,7 +181,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 
 <ul class="price">
     <?php 
-        $filteredCarItemByPrice = filter($cars,'price', 35000);
+        $filteredCarItemByPrice = filters($cars,'price', 35000);
         foreach($filteredCarItemByPrice as $item):
             if($item['price'] === 35000):
     ?>
@@ -199,7 +199,7 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 
 <h4>Car Filter Using Lambda Function.</h4>
 <?php 
-      function filters($items,$func) {
+      function filtered($items,$func) {
         $filteredItems = [];
         foreach($items as $item) {
             if($func($item)) {
@@ -213,10 +213,29 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
 
 <ul class="price">
     <?php 
-        $filteredCarByPrice = filters($cars,function($car){
+        $filteredCarByPrice = filtered($cars,function($car){
             return $car['price'] <= 35000;
         });
         foreach($filteredCarByPrice as $item):
+    ?>
+        <li>
+            <a href="<?php echo $item['website'] ?>" target="_blank">
+                <?php echo $item['name']; ?>
+            </a>
+            
+            <p>price is $<?php echo $item['price']; ?></p>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<h4>Car Filter Using PHP Built IN Function.</h4>
+
+<ul class="price">
+    <?php 
+        $filterCar = array_filter($cars, function($car){
+            return $car['price'] < 35000;
+        });
+        foreach($filterCar as $item):
     ?>
         <li>
             <a href="<?php echo $item['website'] ?>" target="_blank">
