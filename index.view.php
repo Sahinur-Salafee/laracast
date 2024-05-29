@@ -15,9 +15,7 @@
         <?php
 
         $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
-
         ?>
-
         <ul>
             <?php 
                 foreach($cars as $car) {
