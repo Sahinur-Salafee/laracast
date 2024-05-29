@@ -70,6 +70,8 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
         ],
     ];
 
+    var_dump($cars);
+
     // Anonymous function
         
     $filteredByCompany = function ($cars, $company) {
@@ -191,5 +193,37 @@ $cars = ['Tesla', 'Mercedes', 'Audi', 'Ferrari'];
             <p>price is $<?php echo $item['price']; ?></p>
         </li>
         <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+
+
+<h4>Car Filter Using Lambda Function.</h4>
+<?php 
+      function filters($items,$func) {
+        $filteredItems = [];
+        foreach($items as $item) {
+            if($func($item)) {
+                $filteredItems[] = $item;
+            }
+        }
+
+        return $filteredItems;
+    }
+?>
+
+<ul class="price">
+    <?php 
+        $filteredCarByPrice = filters($cars,function($car){
+            return $car['price'] <= 35000;
+        });
+        foreach($filteredCarByPrice as $item):
+    ?>
+        <li>
+            <a href="<?php echo $item['website'] ?>" target="_blank">
+                <?php echo $item['name']; ?>
+            </a>
+            
+            <p>price is $<?php echo $item['price']; ?></p>
+        </li>
     <?php endforeach; ?>
 </ul>
