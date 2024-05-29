@@ -1,18 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Laracast PHP Course</title>
+<?php
+    $cars = [
+        [
+            "name" => "Tesla Roadster",
+            "model" => "Model Roadster",
+            "website" => 'https://www.tesla.com/roadster',
+            "company" => 'Tesla Inc',
+            "companyUrl" => 'https://www.tesla.com',
+            "price" => 35000
+        ],
+        [
+            "name" => "Tesla X",
+            "model" => "Model X",
+            "website" => 'https://www.tesla.com/modelx',
+            "company" => 'Tesla Inc',
+            "companyUrl" => 'https://www.tesla.com',
+            "price" => 32000
+        ], 
+        [
+            "name" => "Tesla S",
+            "model" => "Model S",
+            "website" => 'https://www.tesla.com/models',
+            "company" => 'Tesla Inc',
+            "companyUrl" => 'https://www.tesla.com',
+            "price" => 30000
+        ],
+        [
+            "name" => "Audi",
+            "model" => "Audi A7",
+            "website" => 'https://www.audi-mediacenter.com/en/audi-a7-sportback-12055',
+            "company" => 'Audi AG',
+            "companyUrl" => 'https://www.audi-mediacenter.com',
+            "price" => 32000
+        ],
+        [
+            "name" => "Audi",
+            "model" => "Audi A4",
+            "website" => 'https://www.audi-mediacenter.com/en/audi-a4-24',
+            "company" => 'Audi AG',
+            "companyUrl" => 'https://www.audi-mediacenter.com',
+            "price" => 35000
+        ],
+        [
+            "name" => "Audi",
+            "model" => "Audi A3",
+            "website" => 'https://www.audi-mediacenter.com/en/audi-a3-sportback-15',
+            "company" => 'Audi AG',
+            "companyUrl" => 'https://www.audi-mediacenter.com',
+            "price" => 30000
+        ],
+    ];
 
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body> 
+    // Anonymous function
+        
+    $filteredByCompany = function ($cars, $company) {
+        $filteredCars = [];
+        foreach($cars as $car) {
+            if($car['company'] === $company) {
+                $filteredCars[] = $car;
+            }
+        }
 
-        <?php include 'functions-and-filters.php'; ?>
+        return $filteredCars;
+    };
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+    $filteredCarsLists = $filteredByCompany($cars, 'Audi AG');
+
+	require 'index.view.php';
