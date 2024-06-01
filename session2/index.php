@@ -1,20 +1,21 @@
-<?php 
+<?php
+
 require 'functions.php';
 
-$heading = 'Home';
+$uri = $_SERVER['REQUEST_URI'];
+echo $uri;
+
+var_dump($uri);
+
+echo '<pre>';
+print_r($_SERVER);
+echo '</pre>';
 
 
-// Die and Dump
-// function dd($value) {
-//     var_dump($value);
-
-//     die();
-// }
-
-// echo $_SERVER['REQUEST_URI'];
-
-// if($_SERVER['REQUEST_URI'] === '/index.php') { echo 'bg-gray-900 text-white';} else {echo 'text-gray-300';}
-// $_SERVER['REQUEST_URI'] = 1;
-// echo $_SERVER['REQUEST_URI'] === 1 ? 'bg-gray-900 text-white' : 'text-gray-300';
-
-require('views/index.view.php');
+if($uri === '/laracast/session2/index.php') {
+    require '/laracast/session2/controllers/index.php';
+} elseif($uri === '/laracast/session2/about.php') {
+    require '/laracast/session2/controllers/about.php';
+} elseif($uri === '/laracast/session2/contact.php') {
+    require '/laracast/session2/controllers/contact.php';
+}

@@ -15,3 +15,4 @@ $_SERVER['REQUEST_URI'] = 1;
 function urlIs($value) {
    return $_SERVER['REQUEST_URI'] === $value;
 }
+
