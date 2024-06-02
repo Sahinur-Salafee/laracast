@@ -10,6 +10,5 @@ function dd($value) {
  * Pass nav URL
  */
 function urlIs($value) {
-   return $_SERVER['SCRIPT_NAME'] === $value;
+   return $_SERVER['REQUEST_URI'] === $value;
 }
-

@@ -16,4 +16,4 @@ $heading = 'Home';
 // $_SERVER['REQUEST_URI'] = 1;
 // echo $_SERVER['REQUEST_URI'] === 1 ? 'bg-gray-900 text-white' : 'text-gray-300';
 
-require('views/index.view.php');
+require('./../views/index.view.php');
