@@ -6,16 +6,40 @@ require 'functions.php';
 
 // connect to database
 
-$dsn = "mysql:host=localhost;port=3307;dbname=laracast;user=root;charset=utf8m";
+// Database configuration
+$host = 'localhost';  // Database host
+$port = '3306';       // Database port
+$db = 'laracast';     // Database name
+$user = 'root';       // Database username
+$pass = '';           // Database password
+$charset = 'utf8mb4'; // Character set
 
-$pdo = new PDO($dsn);
+// Data Source Name (DSN)
+$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
 
-// Prepare statements.
-$statements = $pdo->prepare("SELECT * FROM `posts`");
+try {
+    // Create a PDO instance (connect to the database)
+    $pdo = new PDO($dsn, $user, $pass);
+    echo "Database connection successful!<br>";
 
-// Execute
-$statements-> execute();
+    // Prepare statements
+    $statements = $pdo->prepare("SELECT * FROM posts");
 
-$posts = $statements-> fetchAll();
+    // Execute
+    $statements->execute();
+
+    // Fetch all posts
+    $posts = $statements->fetchAll();
+
+    // Output the fetched posts
+    foreach ($posts as $post) {
+        echo $post['title'] . "<br>";
+    }
+} catch (PDOException $e) {
+    // Handle connection errors
+    echo "Connection failed: " . $e->getMessage() . "<br>";
+    echo "Error code: " . (int)$e->getCode();
+    exit();
+}
 
 dd($posts);
