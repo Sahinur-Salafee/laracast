@@ -4,7 +4,7 @@
 class Database {
 
     public $connection;
-    public function __construct($config)
+    public function __construct($config, $usename = 'root', $password = '')
     {
 
         // Data Source Name (DSN)
@@ -13,7 +13,7 @@ class Database {
         // $dsn = 'mysql:'. http_build_query($config, '', ';');
 
         // Create a PDO instance (connect to the database)
-        $this-> connection = new PDO($dsn,'root','',[
+        $this-> connection = new PDO($dsn,$usename,$password,[
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     }
