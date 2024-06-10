@@ -13,6 +13,7 @@ class Database {
         // $dsn = 'mysql:'. http_build_query($config, '', ';');
 
         // Create a PDO instance (connect to the database)
+        // PDO:: ATTR_DEFAULT_FETCH_MODE: Set the default fetch mode for this connection
         $this-> connection = new PDO($dsn,$usename,$password,[
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
