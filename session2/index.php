@@ -10,7 +10,10 @@ require 'Database.php';
 $config = require 'config.php';
 
 $database = new Database($config);
+// database query
 $query = "SELECT * FROM posts WHERE id=1";
+
+// Fetch all posts
 $posts = $database->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
 // Output the fetched posts
