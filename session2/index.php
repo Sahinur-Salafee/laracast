@@ -11,15 +11,16 @@ $config = require 'config.php';
 
 $database = new Database($config);
 // database query
-$query = "SELECT * FROM posts WHERE id=1";
+$query = "SELECT * FROM notes WHERE user_id = 2";
 
 // Fetch all posts
-$posts = $database->query($query)->fetchAll(PDO::FETCH_ASSOC);
+// $posts = $database->query($query)->fetchAll(PDO::FETCH_ASSOC);
+$notes = $database->query($query)->fetchAll();
 
 // Output the fetched posts
-foreach ($posts as $post) {
-    echo '<li>' . $post['title'] . "</li>";
+foreach ($notes as $note) {
+    echo '<li>' . $note['body'] . "</li>";
 }
 
 
-dd($posts);
+dd($notes);

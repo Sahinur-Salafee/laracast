@@ -3,7 +3,7 @@
 return [
     'host' => 'localhost',
     'port' => '3306',
-    'db' => 'laracast',
+    'db' => 'note_app',
     'user' => 'root',
     'pass' => '',
     'charset' => 'utf8mb4',
