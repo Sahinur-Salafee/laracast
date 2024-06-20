@@ -2,9 +2,9 @@
 $url = parse_url($_SERVER['REQUEST_URI'])['path'] ;
 
 $routes = [
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/contact' => 'controllers/contact.php',
+    '/' => 'index.php',
+    '/about' => 'about.php',
+    '/contact' => 'contact.php',
 ];
 
 function routerControls($url, $routes) {
@@ -17,7 +17,5 @@ function routerControls($url, $routes) {
 
 function abort($code = 404) {
     http_response_code($code);
-    require "views/{$code}.php";
-
-    die();
+    require "views/{$code}.php";    
 }
