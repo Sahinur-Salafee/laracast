@@ -3,6 +3,7 @@
 require 'functions.php';
 
  require 'router.php';
+ require 'views/index.view.php';
 
 // connect to database
 require 'Database.php';
