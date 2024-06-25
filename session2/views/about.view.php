@@ -7,6 +7,6 @@
         <p>This is About Page.</p>
     </div>
 </main>
-
+<?php dd($_SERVER); ?>
 <?php require 'partials/footer.php'; ?>
 

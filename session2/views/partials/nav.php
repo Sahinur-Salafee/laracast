@@ -8,9 +8,9 @@
             <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="/laracast/session2/" class="<?php echo $_SERVER['REQUEST_URI'] === '/laracast/session2/' ? 'bg-gray-900 text-white' : ' text-gray-300'; ?>  hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-                    <a href="/laracast/session2/views/about.view.php" class="<?php echo $_SERVER['REQUEST_URI'] === '/laracast/session2/views/about.view.php' ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
-                    <a href="/laracast/session2/views/contact.view.php" class="<?php echo $_SERVER['REQUEST_URI'] === '/laracast/session2/views/contact.view.php' ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+                    <a href="/laracast/session2/" class="<?php urlIs('/laracast/session2/') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?>  hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+                    <a href="/laracast/session2/controllers/about.php" class="<?php urlIs('/laracast/session2/controllers/about.php') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+                    <a href="/laracast/session2/controllers/contact.php" class="<?php urlIs('/laracast/session2/controllers/contact.php') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                 </div>
             </div>
             </div>
