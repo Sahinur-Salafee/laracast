@@ -9,8 +9,8 @@
                 <div class="ml-10 flex items-baseline space-x-4">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="/laracast/session2/" class="<?php urlIs('/laracast/session2/') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?>  hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-                    <a href="/laracast/session2/controllers/about.php" class="<?php urlIs('/laracast/session2/controllers/about.php') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
-                    <a href="/laracast/session2/controllers/contact.php" class="<?php urlIs('/laracast/session2/controllers/contact.php') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+                    <a href="/laracast/session2/controllers/about" class="<?php urlIs('/laracast/session2/controllers/about') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+                    <a href="/laracast/session2/controllers/contact" class="<?php urlIs('/laracast/session2/controllers/contact') ? 'bg-gray-900 text-white' : ' text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                 </div>
             </div>
             </div>

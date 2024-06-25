@@ -3,9 +3,11 @@ $url = parse_url($_SERVER['REQUEST_URI'])['path'] ;
 
 $routes = [
     '/' => 'index.php',
-    '/about' => 'about.php',
-    '/contact' => 'contact.php',
+    '/about' => 'controllers/about.php',
+    '/contact' => 'controllers/contact.php',
 ];
+
+echo 'Hello';
 
 function routerControls($url, $routes) {
     if (array_key_exists($url, $routes)) {
