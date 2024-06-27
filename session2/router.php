@@ -7,8 +7,6 @@ $routes = [
     '/contact' => 'controllers/contact.php',
 ];
 
-echo 'Hello';
-
 function routerControls($url, $routes) {
     if (array_key_exists($url, $routes)) {
         require $routes[$url];
