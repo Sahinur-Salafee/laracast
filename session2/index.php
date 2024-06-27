@@ -18,6 +18,10 @@ $query = "SELECT * FROM notes WHERE user_id = 2";
 $notes = $database->query($query)->fetchAll();
 
 // Output the fetched posts
-foreach ($notes as $note) {
-    echo '<li>' . $note['body'] . "</li>";
-}
+foreach ($notes as $note): ?>
+    <li>
+        <a href="note.php?id=<?php echo $note['id'] ?>"> 
+            <?php echo $note['body']; ?>
+        </a>
+    </li>
+<?php endforeach ?>
