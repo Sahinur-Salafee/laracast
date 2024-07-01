@@ -10,8 +10,7 @@ $db = new Database($config);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     // INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES (NULL, 'Hello there.', '2');
-    $db->query('INSERT INTO notes (id, body, user_id) VALUES (:id, :body, :user_id)', [
-        'id' => NULL,
+    $stm = $db->query('INSERT INTO notes (body, user_id) VALUES (:body, :user_id)', [
         'body' => $_POST['body'],
         'user_id' => 2
     ]);
@@ -24,9 +23,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-4">
                     <div class="col-span-full">
-                        <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
+                        <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
                         <div class="mt-2">
-                            <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 p-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Here is your note idea..."></textarea>
+                            <textarea id="about" name="body" rows="3" class="block w-full rounded-md border-0 p-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Here is your note idea..."></textarea>
                         </div>
                     </div>
                 </div>
