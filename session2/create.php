@@ -2,6 +2,20 @@
 
 require './../session2/views/partials/header.php';
 require 'functions.php';
+// connect to database
+require 'Database.php';
+
+$config = require 'config.php';
+$db = new Database($config);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES (NULL, 'Hello there.', '2');
+    $db->query('INSERT INTO notes (id, body, user_id) VALUES (:id, :body, :user_id)', [
+        'id' => NULL,
+        'body' => $_POST['body'],
+        'user_id' => 2
+    ]);
+}
 
 ?>
 <div class="mx-auto max-w-7xl py-10">
@@ -21,6 +35,7 @@ require 'functions.php';
         </div>
     </form>
 </div>
+
 
 
 <?php
