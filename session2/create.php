@@ -8,19 +8,30 @@ require 'Database.php';
 $config = require 'config.php';
 $db = new Database($config);
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $body = $_POST['body'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve data from POST request
+    $body = $_POST['body'] ?? null;
     $user_id = 2;
-    var_dump($body, $user_id);
 
-    // INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES (NULL, 'Hello there.', '2');
-    $db->query('INSERT INTO notes (id, body, user_id) VALUES (:id, :body, :user_id)', [
-        'id' => NULL,
-        'body' => $_POST['body'],
-        'user_id' => 2
-    ]);
+    // Ensure required data is available
+    if ($body) {
+        // Prepare SQL query
+        $sql = "INSERT INTO notes (body, user_id) VALUES (:body, :user_id)";
+        
+        try {
+            // Execute query with parameters
+            $db->query($sql, [
+                ':body' => $body,
+                ':user_id' => $user_id
+            ]);
+            echo "New note added successfully.";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    } else {
+        echo "Body and User ID are required.";
+    }
 }
-
 ?>
 <div class="mx-auto max-w-7xl py-10">
     <form method="POST" class="bg-white rounded-md px-10 pt-5 pb-20">
