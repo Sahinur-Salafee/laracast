@@ -9,8 +9,13 @@ $config = require 'config.php';
 $db = new Database($config);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $body = $_POST['body'];
+    $user_id = 2;
+    var_dump($body, $user_id);
+
     // INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES (NULL, 'Hello there.', '2');
-    $stm = $db->query('INSERT INTO notes (body, user_id) VALUES (:body, :user_id)', [
+    $db->query('INSERT INTO notes (id, body, user_id) VALUES (:id, :body, :user_id)', [
+        'id' => NULL,
         'body' => $_POST['body'],
         'user_id' => 2
     ]);
