@@ -24,7 +24,10 @@ $notes = $database->query($query)->fetchAll();
 foreach ($notes as $note): ?>
     <li>
         <a href="note.php?<?php echo $note['id']; ?>"> 
-            <?php echo $note['body']; ?>
+            
+            <?php 
+                echo htmlspecialchars($note['body']);  // escape output
+            ?>
         </a>
     </li>
     <?php endforeach ?>

@@ -8,9 +8,15 @@ require 'Database.php';
 $config = require 'config.php';
 $db = new Database($config);
 
+function getMessage() {
+    if (isset($_GET['message'])) {
+        return $_GET['message'];
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve data from POST request
-    $body = $_POST['body'] ?? null;
+    $body = $_POST['body'];
     $user_id = 2;
 
     // Ensure required data is available
@@ -29,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error: " . $e->getMessage();
         }
     } else {
-        echo "Body and User ID are required.";
+        echo "Body is required.";
     }
 }
 ?>
@@ -49,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
         </div>
     </form>
-    <a href="index.php" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">back</a>
+    <a href="index.php" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">note list</a>
 </div>
 
 
