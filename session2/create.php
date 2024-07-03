@@ -18,24 +18,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve data from POST request
     $body = $_POST['body'];
     $user_id = 2;
+    $errors = [];
+
+    if(strlen($body) === 0) {
+       $errors['body'] = "The body field is required.";
+    }
 
     // Ensure required data is available
-    if ($body) {
-        // Prepare SQL query
+    // Prepare SQL query
+    if(empty($errors)) {
+
         $sql = "INSERT INTO notes (body, user_id) VALUES (:body, :user_id)";
         
-        try {
-            // Execute query with parameters
-            $db->query($sql, [
-                ':body' => $body,
-                ':user_id' => $user_id
-            ]);
-            echo "New note added successfully.";
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    } else {
-        echo "Body is required.";
+        // Execute query with parameters
+        $db->query($sql, [
+            ':body' => $body,
+            ':user_id' => $user_id
+        ]);
+        echo "New note added successfully.";
     }
 }
 ?>
@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
                         <div class="mt-2">
                             <textarea id="about" name="body" rows="3" class="block w-full rounded-md border-0 p-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Here is your note idea..."></textarea>
+                            <?php if(isset($errors['body'])): ?>
+                                <p class="text-red-500 text-sm mt-1"><?php echo $errors['body']; ?></p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
