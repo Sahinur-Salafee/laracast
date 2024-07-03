@@ -24,6 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        $errors['body'] = "The body field is required.";
     }
 
+    if(strlen($body) > 1000) {
+        $errors['body'] = "The body field must be less than 1000 characters.";
+    }
+
     // Ensure required data is available
     // Prepare SQL query
     if(empty($errors)) {
@@ -64,8 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <?php
-
-dd($_POST);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
    echo "Form submitted";
