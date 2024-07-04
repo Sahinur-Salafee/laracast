@@ -12,12 +12,6 @@ $db = new Database($config);
 // $validator = new Validator();
 //$validator-> stringSize('hello', 1, 10);
 
-function getMessage() {
-    if (isset($_GET['message'])) {
-        return $_GET['message'];
-    }
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve data from POST request
     $body = $_POST['body'];
