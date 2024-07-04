@@ -9,6 +9,9 @@ require 'Validator.php';
 $config = require 'config.php';
 $db = new Database($config);
 
+// $validator = new Validator();
+//$validator-> stringSize('hello', 1, 10);
+
 function getMessage() {
     if (isset($_GET['message'])) {
         return $_GET['message'];
