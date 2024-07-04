@@ -4,6 +4,7 @@ require './../session2/views/partials/header.php';
 require 'functions.php';
 // connect to database
 require 'Database.php';
+require 'Validator.php';
 
 $config = require 'config.php';
 $db = new Database($config);
@@ -20,12 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = 2;
     $errors = [];
 
-    if(strlen($body) === 0) {
-       $errors['body'] = "The body field is required.";
-    }
-
-    if(strlen($body) > 1000) {
-        $errors['body'] = "The body field must be less than 1000 characters.";
+    if(! Validator::stringSize($body, 1, 1000)) {
+       $errors['body'] = "The body field is minimum 1 to maximum 1000 required.";
     }
 
     // Ensure required data is available
