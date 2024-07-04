@@ -15,7 +15,7 @@ $db = new Database($config);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve data from POST request
     $body = $_POST['body'];
-    $user_id = 2;
+    $user_id = 4;
     $errors = [];
 
     if(! Validator::stringSize($body, 1, 1000)) {

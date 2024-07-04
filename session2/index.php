@@ -11,7 +11,7 @@ $config = require 'config.php';
 
 $database = new Database($config);
 // database query
-$query = "SELECT * FROM notes WHERE user_id = 2";
+$query = "SELECT * FROM notes WHERE user_id = 4";
 
 // Fetch all posts
 // $posts = $database->query($query)->fetchAll(PDO::FETCH_ASSOC);
